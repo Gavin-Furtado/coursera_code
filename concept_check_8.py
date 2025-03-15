@@ -31,10 +31,19 @@ def calculate_313_attitude(dcm):
 
     return phi, theta, psi
 
+# Question 2
+# mat_BN = dcm(30,20,10)
+# mat_RN = dcm(5,5,-5)
+# mat_BR = mat_BN @ mat_RN.T
+# phi, theta, psi = calculate_attitude(mat_BR)
+
+# print(phi,theta, psi)
+
+# Question 2
+# 3-2-1 DCM from inertial to body frame
+
 mat_BN = dcm(30,20,10)
-mat_RN = dcm(5,5,-5)
-mat_BR = mat_BN @ mat_RN.T
+# print(mat_BN)
+# phi, theta, psi = calculate_attitude(mat_BN)
+# print(phi,theta,psi)
 
-phi, theta, psi = calculate_attitude(mat_BR)
-
-print(phi,theta, psi)
