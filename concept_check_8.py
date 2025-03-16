@@ -25,25 +25,27 @@ def calculate_attitude(dcm):
     return phi, theta, psi
 
 def calculate_313_attitude(dcm):
-    phi = np.degrees(np.arctan2(dcm[1][2],dcm[2][2]))
-    theta = np.degrees(-np.arcsin(dcm[0][2]))
-    psi = np.degrees(np.arctan2(dcm[0][1],dcm[0][0]))
+    raan = np.degrees(np.arctan2(dcm[2][0],-dcm[2][1]))
+    inc = np.degrees(np.arccos(dcm[2][2]))
+    aop = np.degrees(np.arctan2(dcm[0][2],dcm[1][2]))
 
-    return phi, theta, psi
-
-# Question 2
-# mat_BN = dcm(30,20,10)
-# mat_RN = dcm(5,5,-5)
-# mat_BR = mat_BN @ mat_RN.T
-# phi, theta, psi = calculate_attitude(mat_BR)
-
-# print(phi,theta, psi)
+    return raan,inc,aop
 
 # Question 2
+mat_BN = dcm(30,20,10)
+mat_RN = dcm(5,5,-5)
+mat_BR = mat_BN @ mat_RN.T
+phi, theta, psi = calculate_attitude(mat_BR)
+
+print(phi,theta, psi)
+
+# Question 1
 # 3-2-1 DCM from inertial to body frame
 
 mat_BN = dcm(30,20,10)
 # print(mat_BN)
 # phi, theta, psi = calculate_attitude(mat_BN)
 # print(phi,theta,psi)
+raan, inc, aop = calculate_313_attitude(mat_BN)
+print(raan, inc, aop)
 
