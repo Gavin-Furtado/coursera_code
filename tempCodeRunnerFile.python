@@ -1,0 +1,33 @@
+from skyfield.api import load
+
+ts = load.timescale()
+t = ts.now()  # or ts.utc(2023, 6, 1)
+
+planets = load('de421.bsp')
+earth, sun, moon = planets['earth'], planets['sun'], planets['moon']
+
+sat = earth + load.tle_file('https://celestrak.org/NORAD/elements/stations.txt')[0]
+sat_pos = sat.at(t)
+
+eci_position = sat_pos.position.km  # Satellite position in ECI frame
+sun_pos = sun.at(t).observe(earth).apparent().position.km
+moon_pos = moon.at(t).observe(earth).apparent().position.km
+
+import pyvista as pv
+
+# Set up plot
+plotter = pv.Plotter()
+
+# Load Earth sphere
+earth_sphere = pv.Sphere(radius=6371.0, theta_resolution=100, phi_resolution=100)
+earth_texture = pv.read_texture("earth_daymap.jpg")
+plotter.add_mesh(earth_sphere, texture=earth_texture)
+
+# Add star field
+import numpy as np
+stars = np.random.normal(size=(1000, 3)) * 1e5  # Replace with real catalog
+plotter.add_points(stars, color='white', point_size=1)
+
+# Add axes legend
+plotter.add_axes()
+plotter.show()
