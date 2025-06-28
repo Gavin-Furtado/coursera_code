@@ -33,8 +33,8 @@ def dcm_to_ep(dcm):
         print("q1_sq is the greatest")
         q1 = np.sqrt(q1_sq)
         q0 = 0.25*(dcm[1][2] - dcm[2][1])/q1
-        q2 = 0.25*(dcm[0][1] - dcm[1][0])/q1
-        q3 = 0.25*(dcm[2][0] - dcm[0][2])/q1
+        q2 = 0.25*(dcm[0][1] + dcm[1][0])/q1
+        q3 = 0.25*(dcm[2][0] + dcm[0][2])/q1
 
     elif q2_sq > q0_sq and q2_sq > q1_sq and q2_sq > q3_sq:
         print("q2_sq is the greatest")
