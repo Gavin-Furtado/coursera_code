@@ -1,13 +1,9 @@
-q_BN = EulerParameter(-0.377964, 0.755929, 0.377964, 0.377964)  # q - N to B
-    # q_FN = EulerParameter(0.359211, 0.898027, 0.179605, 0.179605)  # q - B to F
+p.array([t1_b,
+                   t2_b,
+                   t3_b]).T
+print(BT_est)
+NT = np.array([t1_n,
+               t2_n,
+               t3_n]).T
 
-    # # q_BN.normalize()
-    # # q_FN.normalize()
-
-    # q_NB = q_BN.inverse()
-    # q_FB = q_FN.multiply_matrix_method(q_NB)
-    # # q_FB.normalize()
-
-    # print("q_BN:", q_BN.q)
-    # print("q_FN:", q_FN.q)
-    # print("Combined q_FB:", q_FB.q)
+BN_est = BT_est @ NT.T

@@ -31,32 +31,32 @@ class EulerParameter:
         return EulerParameter(*q3)
 
 def main():
-    q_BN = EulerParameter(0.774597, 0.258199, 0.516398, 0.258199)  # q - N to B
-    q_FB = EulerParameter(0.359211, 0.898027, 0.179605, 0.179605)  # q - B to F
-
-    # q_BN.normalize()
-    # q_FB.normalize()
-
-    q_FN = q_FB.multiply_matrix_method(q_BN)
-    # q_FN.normalize()
-
-    print("q_BN:", q_BN.q)
-    print("q_FB:", q_FB.q)
-    print("Combined q_FN:", q_FN.q)
-
-    # q_BN = EulerParameter(-0.377964, 0.755929, 0.377964, 0.377964)  # q - N to B
-    # q_FN = EulerParameter(0.359211, 0.898027, 0.179605, 0.179605)  # q - B to F
+    # q_BN = EulerParameter(0.774597, 0.258199, 0.516398, 0.258199)  # q - N to B
+    # q_FB = EulerParameter(0.359211, 0.898027, 0.179605, 0.179605)  # q - B to F
 
     # # q_BN.normalize()
-    # # q_FN.normalize()
-
-    # q_NB = q_BN.inverse()
-    # q_FB = q_FN.multiply_matrix_method(q_NB)
     # # q_FB.normalize()
 
+    # q_FN = q_FB.multiply_matrix_method(q_BN)
+    # # q_FN.normalize()
+
     # print("q_BN:", q_BN.q)
-    # print("q_FN:", q_FN.q)
-    # print("Combined q_FB:", q_FB.q)
+    # print("q_FB:", q_FB.q)
+    # print("Combined q_FN:", q_FN.q)
+
+    q_BN = EulerParameter(-0.377964, 0.755929, 0.377964, 0.377964)  # q - N to B
+    q_FN = EulerParameter(0.359211, 0.898027, 0.179605, 0.179605)  # q - B to F
+
+    # q_BN.normalize()
+    # q_FN.normalize()
+
+    q_NB = q_BN.inverse()
+    q_FB = q_FN.multiply_matrix_method(q_NB)
+    # q_FB.normalize()
+
+    print("q_BN:", q_BN.q)
+    print("q_FN:", q_FN.q)
+    print("Combined q_FB:", q_FB.q)
 
 
 if __name__ == "__main__":
